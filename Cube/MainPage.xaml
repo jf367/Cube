@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="Cube.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cube"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Length: " Grid.Column="0" VerticalAlignment="Center" Margin="2,0" />
+                <TextBox x:Name="LengthTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="2,0" TextChanged="LengthTextBox_TextChanged" Loaded="LengthTextBox_Loaded" InputScope="Digits" ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Color: " Grid.Column="0" VerticalAlignment="Center" Margin="2,0" />
+                <ComboBox x:Name="ColorComboBox" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2,0" VerticalAlignment="Center" Loaded="ColorComboBox_Loaded" SelectionChanged="ColorComboBox_SelectionChanged" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="Transformation: " Grid.Column="0" VerticalAlignment="Center" Margin="2,0" />
+                <ComboBox x:Name="TransformationComboBox" Grid.Column="1" HorizontalAlignment="Stretch" Margin="2,0" VerticalAlignment="Center" Loaded="TransformationComboBox_Loaded" />
+            </Grid>
+        </Grid>
+
+        <canvas:CanvasControl 
+            x:Name="MainCanvas" 
+            Grid.Row="2" 
+            Loaded="MainCanvas_Loaded"
+            Draw="CanvasControl_Draw" 
+            PointerPressed="MainCanvas_PointerPressed"
+            PointerReleased="MainCanvas_PointerReleased"
+            PointerMoved="MainCanvas_PointerMoved"
+            PointerEntered="MainCanvas_PointerEntered"
+            PointerExited="MainCanvas_PointerExited"
+            DoubleTapped="MainCanvas_DoubleTapped"
+         />
+    </Grid>
+</Page>
